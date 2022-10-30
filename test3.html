@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>索引</th>
+                    <th>ID</th>
+                    <th>姓名</th>
+                </tr>
+            </thead>
+            <!-- index索引号必须放到后面！ -->
+            <tbody>
+                <tr v-for="(item,index) in list" :key="item.id">
+                    <td>{{index}}</td>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 数据驱动视图  双向数据绑定 -->
+        <input type="text" v-model="name">
+        <button @click="add">点击添加</button>
+        <ul>
+            <li v-for="item in list"> <input type="checkbox"> 姓名：{{item.name}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                num: "A",
+                name: "",
+                list: [{
+                    id: 1,
+                    name: "张三"
+                }, {
+                    id: 2,
+                    name: "李四"
+                }, {
+                    id: 3,
+                    name: "王五"
+                }, {
+                    id: 4,
+                    name: "赵六"
+                }],
+                nextid: 5
+            },
+            methods: {
+                add() {
+                    this.list.push({
+                        id: this.nextid,
+                        name: this.name,
+                    })
+                    this.name = ""
+                    this.nextid++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

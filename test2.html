@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" @keyup.enter="submit">
+        <hr>
+        <input type="text" @keyup.esc="clear">
+        <hr>
+        <!-- 双向绑定 -->
+        <input type="text" v-model="name">
+        <hr>
+        <p>你选中的省份是：</p>
+        <select name="province" id="" v-model="username">
+            <!-- 选择不同的option，其实是选择的不同的value值 -->
+            <option value="">请选择你想去的省份</option>
+            <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">广州</option>
+            <option value="4">济南</option>
+        </select>
+        <hr>
+        <input type="text" v-model.number.tirm.lazy="num1">
+        <input type="text" v-model.number="num2">
+        <h3>{{ num1+num2 }}</h3>
+        <hr>
+        <input type="text" v-model.trim="name">
+        <button @click="showname">按钮</button>
+        <h3 v-show="1===1">v-show</h3>
+        <h3 v-if="1===1">v-if</h3>
+        <hr>
+        <h3 v-if="num=='A'">A</h3>
+        <h3 v-else-if="num=='b'">B</h3>
+        <h3 v-else>c</h3>
+        <hr>
+        <ul>
+            <li v-for="item in list">姓名：{{ item.name }}<br/>id:{{item.id}}<br><br><br></li>
+        </ul>
+
+    </div>
+
+
+
+    <script src="vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                name: "张三",
+                age: 18,
+                username: "2",
+                num1: "",
+                num2: '',
+                num: "A",
+                list: [{
+                    id: 1,
+                    name: "张三"
+                }, {
+                    id: 2,
+                    name: "李四"
+                }, {
+                    id: 3,
+                    name: "王五"
+                }, {
+                    id: 4,
+                    name: "赵六"
+                }]
+            },
+            methods: {
+                submit() {
+                    console.log("按下了键盘");
+                },
+                clear(e) {
+                    console.log("点击了esc键");
+                    e.target.value = ""
+                },
+                showname() {
+                    console.log(`用户名是：${this.name}`);
+                    console.log(this.name);
+                    console.log(`${this.age}`);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
