@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ name }}</p>
+        <h3 v-text="name">你好中国，{{age}}</h3>
+        <h2 v-text="age">fghjkl</h2>
+        <h5 v-text="gender">dfghjkkjhjgfdcfg</h5>
+
+        <hr>
+        <p>你的名字叫：{{ name }}</p>
+        <h3>你今年{{age}}岁了</h3>
+        <h2>你是一名{{gender}}性</h2>
+        <hr>
+        <h3>这是一个网址:{{info}}</h3>
+        <h3 v-text="info">你好join</h3>
+        <p v-html="info">fghjkllkjhbvhj</p>
+        <hr>
+        <input type="text" :placeholder="tips">
+        <hr>
+        <input type="text" v-bind:placeholder="tips">
+        <hr>
+        <h3>hello:{{str.split("").reverse().join("")}}</h3>
+        <h3>{{hi.split("")}}</h3>
+        <div style="width:100px;height:100px;background-color:red" :title="'index'+age" @click="big">
+            <div class="min" style="width:10px;height:10px;background-color:orange" @click.stop="min"></div>
+        </div>
+        <hr>
+        <!-- 事件绑定指令 -->
+        <h3>count的值是：{{age}}</h3>
+        <button v-on:click="add(5)">+1</button>
+        <button v-on:click="subtract(5)">-1</button>
+        <button @click="ride">*3</button>
+        <button @click="except">/3</button>
+
+        <hr>
+        <a href="http://www.baidu.com" @click.prevent="lalala(5,$event)">百度一下</a>
+
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                name: "zhangsan",
+                age: 18,
+                gender: "man",
+                info: "<h3>你好jack</h3>",
+                tips: "请开始你的表演",
+                str: "你是中国人",
+                hi: "天线宝宝"
+            },
+            methods: {
+                add(n) {
+                    this.age++;
+                },
+                subtract(n) {
+                    this.age -= n;
+                    // console.log(this);
+                    // console.log(vm);
+                    // vm是实例对象不是构造函数
+                    // console.log(vm === Vue);
+                },
+                ride() {
+                    this.age *= 3
+                },
+                except() {
+                    this.age /= 3
+                },
+                lalala(n, e) {
+                    // e.preventDefault();
+                },
+                big() {
+                    console.log("big");
+                },
+                min() {
+                    console.log("min");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
