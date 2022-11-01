@@ -59,7 +59,7 @@
 
                         </div>
                     </td>
-                    <td>{{item.time}}</td>
+                    <td>{{item.time|timeformat}}</td>
                     <td>
                         <a href="javascript:;" @click.prevent="remove(item.id)">删除</a>
                     </td>
@@ -67,6 +67,7 @@
             </tbody>
         </table>
     </div>
+    <script src="dayjs.min.js"></script>
     <script src="vue.js"></script>
     <script>
         const vm = new Vue({
@@ -119,6 +120,11 @@
                     this.list.push(obj)
                     this.nextid++;
                     this.brand = ''
+                }
+            },
+            filters: {
+                timeformat(time) {
+                    return dayjs(time).format("YYYY-MM-DD hh:mm:ss")
                 }
             }
         })
