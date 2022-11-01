@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // 如果是负数，就从倒数第几个开始(从倒数第一开始，0表示数组中第一个值)
+        const newarr1 = arr.slice(-1);
+        const newarr2 = arr.slice(-2);
+        // 代表所有的值,从零开始，第0个表示数组中的第一个值
+        const newarr3 = arr.slice(0);
+        // 从数组中的第二个值开始
+        const newarr4 = arr.slice(1);
+        // 括号中的第二个值不包括他自己
+        const newarr6 = arr.slice(1, 2);
+        // 如果是负数，就从倒数第几个开始(从倒数第一开始)
+        const newarr7 = arr.slice(1, -1)
+        console.log(newarr1); //[9]
+        console.log(newarr2); //[8, 9]
+        console.log(newarr3); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+        console.log(newarr4); //[]
+        console.log(newarr6); //[2]
+        console.log(newarr7); //[2, 3, 4, 5, 6, 7, 8]
+
+
+        // const newArr = arr.filter(function(val) {
+        //     return val > 4
+        // })
+        // const arrs = arr.filter((item) => {
+        //     return item > 5
+        // });
+
+        // console.log(arrs);
+        // console.log(newArr);
+        let arrs = [1, 2, 3, 4, 5];
+        const t = arrs.join(" ^ ");
+        console.log(t);
+        // 1 ^ 2 ^ 3 ^ 4 ^ 5  string类型
+        let str = "jack";
+        var r = str.split('');
+        console.log(r);
+        // ['j', 'a', 'c', 'k']
+        // let arrs = [1, 2, 3, 4, 5];
+        console.log(arrs.reverse());
+        // [5, 4, 3, 2, 1
+    </script>
+</body>
+
+</html>
